@@ -8,6 +8,20 @@ describe "Static pages" do
     it{ should have_content('Sample App')}
     it{ should have_title(full_title(''))}
     it{ should_not have_title('| Home')}
+    
+    it{ 
+      click_link 'About' 
+      should have_title('About Us')
+      click_link 'Help' 
+      should have_title('Help')
+      click_link 'Contact' 
+      should have_title('Contact')
+      click_link 'Home' 
+      click_link 'Sign up now!' 
+      should have_title('Sign up')
+      click_link 'sample app' 
+      should have_title('')
+    }
   end
   describe "Help page" do
     before{ visit help_path}
